@@ -1,7 +1,12 @@
 <script setup lang="ts">
 import * as z from "zod";
+import * as mutations from "../graphql/mutations";
 import { useField, useForm } from "vee-validate";
 import { toTypedSchema } from "@vee-validate/zod";
+import { CreateFormsInput, CreateFormsMutation } from "../API";
+import { GraphQLQuery } from "@aws-amplify/api";
+
+import { API } from "aws-amplify";
 
 const validationSchema = toTypedSchema(
   z.object({
@@ -23,9 +28,23 @@ const { value: firstName } = useField("firstName");
 const { value: lastName } = useField("lastName");
 const { value: address } = useField("address");
 
-const onSubmit = handleSubmit((values) => {
-  alert(JSON.stringify(values, null, 2));
-});
+const onSubmit = handleSubmit(
+  async ({ address, firstName, lastName }, { resetForm }) => {
+    //   alert(JSON.stringify(values, null, 2));
+    const formDetails: CreateFormsInput = {
+      address,
+      lastName,
+      firstName,
+    };
+    const newForm = await API.graphql<GraphQLQuery<CreateFormsMutation>>({
+      query: mutations.createForms,
+      variables: { input: formDetails },
+    });
+    console.log("newForm", newForm);
+    resetForm();
+    // clear form
+  }
+);
 </script>
 
 <template>

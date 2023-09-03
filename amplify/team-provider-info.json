@@ -1,0 +1,20 @@
+{
+  "staging": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-zodtest-staging-182819-authRole",
+      "UnauthRoleArn": "arn:aws:iam::127847013811:role/amplify-zodtest-staging-182819-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::127847013811:role/amplify-zodtest-staging-182819-authRole",
+      "Region": "us-east-2",
+      "DeploymentBucketName": "amplify-zodtest-staging-182819-deployment",
+      "UnauthRoleName": "amplify-zodtest-staging-182819-unauthRole",
+      "StackName": "amplify-zodtest-staging-182819",
+      "StackId": "arn:aws:cloudformation:us-east-2:127847013811:stack/amplify-zodtest-staging-182819/a83bb630-4a87-11ee-b2d9-025450e3c533",
+      "AmplifyAppId": "dlibll0nzbpo"
+    },
+    "categories": {
+      "auth": {
+        "zodtest": {}
+      }
+    }
+  }
+}
